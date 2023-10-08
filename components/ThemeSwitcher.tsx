@@ -27,7 +27,7 @@ const ThemeSwitcher = () => {
           <MoonIcon className="h-[1.2rem] w-[1.2rem]" />
         </TabsTrigger>
 
-        <TabsTrigger value="light" onClick={() => setTheme("system")}>
+        <TabsTrigger value="system" onClick={() => setTheme("system")}>
           <DesktopIcon className="h-[1.2rem] w-[1.2rem]" />
         </TabsTrigger>
       </TabsList>
