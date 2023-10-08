@@ -1,9 +1,14 @@
-import React from 'react'
+import Link from "next/link";
 
 const Logo = () => {
   return (
-    <div>Logo</div>
-  )
-}
+    <Link
+      href={"/"}
+      className="font-bold text-3xl bg-gradient-to-bl from-[#00d2ff] to-[#3a7bd5] text-transparent bg-clip-text hover:cursor-pointer"
+    >
+      PageForm
+    </Link>
+  );
+};
 
-export default Logo
+export default Logo;
