@@ -7,15 +7,19 @@ import { LuView } from "react-icons/lu";
 import { FaWpforms } from "react-icons/fa";
 import { HiCursorClick } from "react-icons/hi";
 import {TbArrowBounce} from "react-icons/tb"
+import CreateFormBtn from "@/components/CreateFormBtn";
 
 const Home = () => {
   return (
-    <div>
+    <div className="container pt-4">
       <Suspense fallback={<StatsCards loading={true} />}>
         <CardStatsWrapper />
       </Suspense>
 
       <Separator className="my-6" />
+      <h2 className="text-4xl font-bold col-span-2">Your Forms</h2>
+      <Separator className="my-6" />
+      <CreateFormBtn />
     </div>
   );
 };
