@@ -57,7 +57,7 @@ const Designer = () => {
     element: FormElementInstance;
   }) {
     const [mouseIsOver, setMouseIsOver] = useState<boolean>(false);
-    const {removeElement} = useDesigner()
+    const { removeElement } = useDesigner();
 
     const topHalf = useDroppable({
       id: element.id + "-top",
@@ -115,8 +115,8 @@ const Designer = () => {
                 variant={"outline"}
                 className="flex justify-center h-full border rounded-md rounded-l-none bg-red-500"
                 onClick={(e) => {
-                  e.stopPropagation()
-                  removeElement(element.id)
+                  e.stopPropagation();
+                  removeElement(element.id);
                 }}
               >
                 <BiSolidTrash className="w-6 h-6" />
@@ -134,7 +134,7 @@ const Designer = () => {
         )}
         <div
           className={cn(
-            "flex w-full h-[120px] items-center rounded-md bg-accent/40 px-4 py-4 pointer-events-none",
+            "flex w-full h-[120px] items-center rounded-md bg-accent/40 px-4 py-4 pointer-events-none opacity-100",
             mouseIsOver && "opacity-30"
           )}
         >
