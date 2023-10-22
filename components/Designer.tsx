@@ -19,13 +19,9 @@ import { idGenerator } from "@/lib/idGenerator";
 import { BiSolidTrash } from "react-icons/bi";
 import { Button } from "./ui/button";
 
-function DesignerElementWrapper({
-  element,
-}: {
-  element: FormElementInstance;
-}) {
+function DesignerElementWrapper({ element }: { element: FormElementInstance }) {
   const [mouseIsOver, setMouseIsOver] = useState<boolean>(false);
-  const { removeElement } = useDesigner();
+  const { removeElement, selectedElement, setSelectedElement } = useDesigner();
 
   const topHalf = useDroppable({
     id: element.id + "-top",
@@ -36,7 +32,7 @@ function DesignerElementWrapper({
     },
   });
 
-  const bottomHalf = useDroppable({  
+  const bottomHalf = useDroppable({
     id: element.id + "-bottom",
     data: {
       type: element.type,
@@ -69,6 +65,10 @@ function DesignerElementWrapper({
         setMouseIsOver(false);
       }}
       className="relative h-[120px] flex flex-col text-foreground hover:cursor-pointer rounded-md ring-1 ring-accent ring-inset"
+      onClick={(e) => {
+        e.stopPropagation();
+        setSelectedElement(element);
+      }}
     >
       <div
         ref={topHalf.setNodeRef}
@@ -119,7 +119,8 @@ function DesignerElementWrapper({
 }
 
 const Designer = () => {
-  const { elements, addElement } = useDesigner();
+  const { elements, addElement, selectedElement, setSelectedElement } =
+    useDesigner();
 
   const droppable = useDroppable({
     id: "designer-drop-area",
@@ -127,7 +128,6 @@ const Designer = () => {
       isDesignerPropArea: true,
     },
   });
-
 
   useDndMonitor({
     onDragEnd: (event: DragEndEvent) => {
@@ -147,10 +147,14 @@ const Designer = () => {
     },
   });
 
-
   return (
     <div className="flex w-full h-full">
-      <div className="p-4 w-full">
+      <div
+        className="p-4 w-full"
+        onClick={() => {
+          if (selectedElement) setSelectedElement(null);
+        }}
+      >
         <div
           ref={droppable.setNodeRef}
           className={cn(
