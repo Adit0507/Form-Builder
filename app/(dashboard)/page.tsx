@@ -155,7 +155,7 @@ function FormCard({ form }: { form: Form }) {
           {!form.published && <Badge variant="destructive">Draft</Badge>}
         </CardTitle>
 
-        <CardDescription>
+        <CardDescription className="flex items-center justify-between text-muted-foreground text-sm">
           {formatDistance(form.createdAt, new Date(), {
             addSuffix: true,
           })}
