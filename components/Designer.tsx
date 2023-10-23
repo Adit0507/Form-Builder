@@ -125,7 +125,7 @@ const Designer = () => {
   const droppable = useDroppable({
     id: "designer-drop-area",
     data: {
-      isDesignerPropArea: true,
+      isDesignerDropArea: true,
     },
   });
 
