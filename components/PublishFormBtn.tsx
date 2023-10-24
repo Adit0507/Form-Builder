@@ -29,6 +29,8 @@ const PublishFormBtn = ({ id }: { id: number }) => {
         title: "Success",
         description: "Form published, share it with the public",
       });
+      
+      router.refresh()
     } catch (error) {
       toast({
         title: "Error",
