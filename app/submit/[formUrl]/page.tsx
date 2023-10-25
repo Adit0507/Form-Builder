@@ -1,5 +1,6 @@
 import { GetFormContentByUrl } from "@/actions/form";
 import { FormElementInstance } from "@/components/FormElements";
+import FormSubmitComponent from "@/components/FormSubmitComponent";
 
 async function SubmitPage({params}: {params: {
     formUrl: string
@@ -12,9 +13,7 @@ async function SubmitPage({params}: {params: {
 
     const formContent = JSON.parse(form.content) as FormElementInstance[]
 
-  return (
-    <div>page</div>
-  )
+  return <FormSubmitComponent formUrl={params.formUrl} content={formContent} />
 }
 
 

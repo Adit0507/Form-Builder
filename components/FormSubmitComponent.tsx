@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState, useTransition } from "react";
 import { FormElementInstance, FormElements } from "./FormElements";
 import { Button } from "./ui/button";
 import { HiCursorClick } from "react-icons/hi";
+import { toast } from "./ui/use-toast";
+import { ImSpinner2 } from "react-icons/im";
+
 
 const FormSubmitComponent = ({
   formUrl,
@@ -13,6 +16,7 @@ const FormSubmitComponent = ({
   content: FormElementInstance[];
 }) => {
     const formValues = useRef<{[key: string]: string}>({})
+    const formErrors = useRef<{[key: string]: boolean}>({})
 
     const submitValue = useCallback((key: string, value: string) => {
         formValues.current[key] = value
