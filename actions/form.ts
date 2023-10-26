@@ -1,14 +1,14 @@
 "use server";
 
 import { currentUser } from "@clerk/nextjs";
-class UserNotFoundError extends Error {}
+class UserNotFoundErr extends Error {}
 import prisma from "@/lib/prisma";
 import { formSchemaType, formSchema } from "@/schemas/form";
 
 export async function GetFormStats() {
   const user = await currentUser();
   if (!user) {
-    throw new UserNotFoundError();
+    throw new UserNotFoundErr();
   }
 
   const stats = await prisma.form.aggregate({
@@ -32,22 +32,27 @@ export async function GetFormStats() {
 
   const bounceRate = 100 - submissionRate;
 
-  return { visits, submissions, submissionRate, bounceRate };
+  return {
+    visits,
+    submissions,
+    submissionRate,
+    bounceRate,
+  };
 }
 
 export async function CreateForm(data: formSchemaType) {
   const user = await currentUser();
   const validation = formSchema.safeParse(data);
-
   if (!validation.success) {
     throw new Error("form not valid");
   }
 
   if (!user) {
-    throw new UserNotFoundError();
+    throw new UserNotFoundErr();
   }
 
   const { name, description } = data;
+
   const form = await prisma.form.create({
     data: {
       userId: user.id,
@@ -57,7 +62,7 @@ export async function CreateForm(data: formSchemaType) {
   });
 
   if (!form) {
-    throw new Error("something went wrong 😲");
+    throw new Error("something went wrong");
   }
 
   return form.id;
@@ -66,7 +71,7 @@ export async function CreateForm(data: formSchemaType) {
 export async function GetForms() {
   const user = await currentUser();
   if (!user) {
-    throw new UserNotFoundError();
+    throw new UserNotFoundErr();
   }
 
   return await prisma.form.findMany({
@@ -82,7 +87,7 @@ export async function GetForms() {
 export async function GetFormById(id: number) {
   const user = await currentUser();
   if (!user) {
-    throw new UserNotFoundError();
+    throw new UserNotFoundErr();
   }
 
   return await prisma.form.findUnique({
@@ -95,9 +100,8 @@ export async function GetFormById(id: number) {
 
 export async function UpdateFormContent(id: number, jsonContent: string) {
   const user = await currentUser();
-
   if (!user) {
-    throw new UserNotFoundError();
+    throw new UserNotFoundErr();
   }
 
   return await prisma.form.update({
@@ -114,7 +118,7 @@ export async function UpdateFormContent(id: number, jsonContent: string) {
 export async function PublishForm(id: number) {
   const user = await currentUser();
   if (!user) {
-    throw new UserNotFoundError();
+    throw new UserNotFoundErr();
   }
 
   return await prisma.form.update({
@@ -164,19 +168,18 @@ export async function SubmitForm(formUrl: string, content: string) {
 }
 
 export async function GetFormWithSubmissions(id: number) {
-  const user = await currentUser()
-  if(!user){
-    throw new UserNotFoundError()
+  const user = await currentUser();
+  if (!user) {
+    throw new UserNotFoundErr();
   }
 
   return await prisma.form.findUnique({
     where: {
       userId: user.id,
-      id
+      id,
     },
-
     include: {
       FormSubmissions: true,
-    }
-  })
+    },
+  });
 }
