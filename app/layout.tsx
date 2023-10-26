@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import DesignerContextProvider from "@/components/context/DesignerContext";
 import NextTopLoader from "nextjs-toploader"
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               {children}{" "}
+              <Analytics />
             </ThemeProvider>
           </DesignerContextProvider>
         </body>
