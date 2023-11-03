@@ -1,36 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Form Builder
 
-## Getting Started
+## Home Page
+![3](https://github.com/Adit0507/Form-Builder/assets/78037846/c3aae8e0-cc5d-499f-b9fb-3510f24d5354)
 
-First, run the development server:
+## Main Workspace
+![form](https://github.com/Adit0507/Form-Builder/assets/78037846/0438a85a-5c0c-4533-bf19-c850a860a857)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Preview Page
+![1](https://github.com/Adit0507/Form-Builder/assets/78037846/d46eef83-3a9f-4b55-bcb0-7f1c04d2ddbf)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Page you"ll see on publishing your form 😉 
+![4](https://github.com/Adit0507/Form-Builder/assets/78037846/5c213419-a780-44e2-8128-30c168308590)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Form Details and Submissions Page
+![5](https://github.com/Adit0507/Form-Builder/assets/78037846/fc613785-3077-4662-9a0d-e972f5d92b9c)
