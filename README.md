@@ -1,5 +1,10 @@
 # Form Builder
 
+## Few things to keep in mind 🧠
+
+- Always <b>save</b> the form before <b>publishing</b>
+- If you are leaving the form and want to work on it later, <b>save</b> it first and continue whenever you want
+
 ## Home Page
 ![3](https://github.com/Adit0507/Form-Builder/assets/78037846/c3aae8e0-cc5d-499f-b9fb-3510f24d5354)
 
